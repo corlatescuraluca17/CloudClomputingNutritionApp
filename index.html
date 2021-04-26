@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Nutrition App</title>
+    </head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        .center_table{
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+        }
+    </style>
+    <body>
+        <div class="w3-row" style="background-color: #1A64A5;text-align: center;">
+            <h3>Nutrition App</h3>
+        </div>
+        <div class="w3-row">
+            <div class="w3-col" style="width: 49.75%;height: 1000px;background-color: #F2CAB5;">
+                <div class="w3-col w3-twothird" style="width: 100%;margin-top: 100px;background-color: #F2CAB5; text-align: center;">
+                    <label>Insert Ingredient</label><br>
+                    <input type="text" id="ingr" name="ingredient"><br><br>
+                    <button onclick="searchFunction()">Search</button>
+                    <p id="demo"></p> 
+                    <table id="tableFirstAPI" class="center_table" style="display: none; width: auto;">
+                        <tr>
+                            <th style="width: 40%;background-color: #1A64A5;color: #ddd;">Food</th>
+                            <th style="width: 40%;background-color: #1A64A5;color: #ddd;">Nutrients</th>
+                            <th style="width: 20%;background-color: #1A64A5;color: #ddd;">Qty</th>
+                        </tr>
+                        <tr>
+                            <td id="food" style="width: 40%;background-color: #eee;"></td>
+                            <td id="nutrients" style="width: 40%;background-color: #fff;padding:15px;"></td>
+                            <td id="qty" style="width: 20%;background-color: #eee;"></td>
+                        </tr>
+                    </table>
+                    <p id="error"></p>
+                </div>
+            </div>
+            <div class="w3-col" style="width: 0.5%;height: 1000px;background-color: #EEA47F;border-radius:1px;">  
+            </div>
+            <div class="w3-col" style="width: 49.75%;height: 1000px;background-color: #F2CAB5;">
+                <p>I am a panel.</p>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        function searchFunction(){
+            var ingredient = document.getElementById("ingr").value;
+            ingredient = ingredient.replaceAll(" ", "%20");
+            
+            var url_search = "https://api.edamam.com/api/food-database/v2/parser?ingr=" + ingredient + "&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe";
+            
+            var table = document.getElementById("tableFirstAPI");
+            table.style.display = "none";
+            var tr = table.getElementsByTagName("tr");
+            document.getElementById("error").style.display = "none";
+            req = $.ajax({
+                url: url_search,
+                type: 'GET',
+                success: function (response) {
+                    if(response.parsed.length != 0){
+                        tr[1].getElementsByTagName("td")[0].innerHTML = response.parsed[0].food.label;
+                        tr[1].getElementsByTagName("td")[1].innerHTML = "Energy KCAL: " + response.parsed[0].food.nutrients.ENERC_KCAL + " kcal <br />"
+                                                                        + "Protein: " +  response.parsed[0].food.nutrients.PROCNT + " g <br />"
+                                                                        + "Fat: " + response.parsed[0].food.nutrients.FAT + " g <br />"
+                                                                        + "Carbs: " + response.parsed[0].food.nutrients.CHOCDF + " g ";
+                        tr[1].getElementsByTagName("td")[2].innerHTML = "100 g";
+                        table.style.display = "";
+                    }
+                    else {
+                        document.getElementById("error").innerHTML = "Bla bla bla";
+                        document.getElementById("error").style.display = "";
+                    }
+                }
+
+            });
+        }
+    </script>
+
+</html>
