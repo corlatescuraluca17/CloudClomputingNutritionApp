@@ -12,7 +12,7 @@ Utilizatorul are 2 opțiuni:
 ## Descrierea API-urilor folosite
 Pentru implementarea aplicației au fost folosite 2 API-uri. <br/>
 * Food and Grocery Database API with Natural Language Processing (NLP) - oferă, prin autentificare, API key-uri, pentru varianta free având un număr limitat de 100 request-uri/minut, utilizatorilor ce își doresc să integreze  în aplicațiile lor un API care calculează valorile nutriționale.  <br/>
-Exemplu de request: GET https://api.edamam.com/api/food-database/v2/parser?ingr=coffee&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe <br/><br/>
+Exemplu de request: GET https://api.edamam.com/api/food-database/v2/parser?ingr=french%20fries&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe <br/><br/>
 Se observă în request-ul de mai sus parametrii:<br/>
        * ingr - ce reprezintă aplimentul pentru care se dorește afișarea informațiilor <br/>
        * app_id - identificatorul unic asociat contului ce permite trimiterea request-urilor, dat explicit în codul sursă <br/>
@@ -20,46 +20,51 @@ Se observă în request-ul de mai sus parametrii:<br/>
 Exemplu de response:<br/>
 ```
 {
-    "text": "coffee",
+    "text": "french fries",
     "parsed": [
         {
             "food": {
-                "foodId": "food_ax0a0yxbbe4hx0apiz1tla01s2w7",
-                "label": "Coffee",
+                "foodId": "food_aqa4qtwapci86kar0l275bjqmkal",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 1.0,
-                    "PROCNT": 0.12,
-                    "FAT": 0.02,
-                    "CHOCDF": 0.0,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 150.0,
+                    "PROCNT": 2.34,
+                    "FAT": 4.99,
+                    "CHOCDF": 23.96,
+                    "FIBTG": 2.0
                 },
                 "category": "Generic foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/ee9/ee9566349cb84dfd9ddac1fdf8cbc907.jpg"
+                "image": "https://www.edamam.com/food-img/559/559b143365bf3dde8d5889ec627e1da7.jpg"
             }
         }
     ],
     "hints": [
         {
             "food": {
-                "foodId": "food_ax0a0yxbbe4hx0apiz1tla01s2w7",
-                "label": "Coffee",
+                "foodId": "food_aqa4qtwapci86kar0l275bjqmkal",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 1.0,
-                    "PROCNT": 0.12,
-                    "FAT": 0.02,
-                    "CHOCDF": 0.0,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 150.0,
+                    "PROCNT": 2.34,
+                    "FAT": 4.99,
+                    "CHOCDF": 23.96,
+                    "FIBTG": 2.0
                 },
                 "category": "Generic foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/ee9/ee9566349cb84dfd9ddac1fdf8cbc907.jpg"
+                "image": "https://www.edamam.com/food-img/559/559b143365bf3dde8d5889ec627e1da7.jpg"
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 237.0
+                    "weight": 240.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_strip",
+                    "label": "Strip",
+                    "weight": 8.2
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -80,39 +85,34 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_cup",
-                    "label": "Cup",
-                    "weight": 237.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 29.6
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_ax0a0yxbbe4hx0apiz1tla01s2w7",
-                "label": "Coffee Bean",
+                "foodId": "food_aqa4qtwapci86kar0l275bjqmkal",
+                "label": "Crinkle Cut French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 1.0,
-                    "PROCNT": 0.12,
-                    "FAT": 0.02,
-                    "CHOCDF": 0.0,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 150.0,
+                    "PROCNT": 2.34,
+                    "FAT": 4.99,
+                    "CHOCDF": 23.96,
+                    "FIBTG": 2.0
                 },
                 "category": "Generic foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/ee9/ee9566349cb84dfd9ddac1fdf8cbc907.jpg"
+                "image": "https://www.edamam.com/food-img/559/559b143365bf3dde8d5889ec627e1da7.jpg"
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 237.0
+                    "weight": 240.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_strip",
+                    "label": "Strip",
+                    "weight": 8.2
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -133,39 +133,34 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_cup",
-                    "label": "Cup",
-                    "weight": 237.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 29.6
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_ax0a0yxbbe4hx0apiz1tla01s2w7",
-                "label": "Coffee and Chicory",
+                "foodId": "food_aqa4qtwapci86kar0l275bjqmkal",
+                "label": "Crinkle Cut Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 1.0,
-                    "PROCNT": 0.12,
-                    "FAT": 0.02,
-                    "CHOCDF": 0.0,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 150.0,
+                    "PROCNT": 2.34,
+                    "FAT": 4.99,
+                    "CHOCDF": 23.96,
+                    "FIBTG": 2.0
                 },
                 "category": "Generic foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/ee9/ee9566349cb84dfd9ddac1fdf8cbc907.jpg"
+                "image": "https://www.edamam.com/food-img/559/559b143365bf3dde8d5889ec627e1da7.jpg"
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 237.0
+                    "weight": 240.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_strip",
+                    "label": "Strip",
+                    "weight": 8.2
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -186,49 +181,29 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_cup",
-                    "label": "Cup",
-                    "weight": 237.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 29.6
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_b36idu0apr5kqtbcs7b7ua8spx6m",
-                "label": "Coffee Bean",
+                "foodId": "food_bu5wvbab122209aehwwvdbn0kzcd",
+                "label": "Shoestring French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 353.0,
-                    "PROCNT": 12.2,
-                    "FAT": 0.5,
-                    "CHOCDF": 75.4,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 167.0,
+                    "PROCNT": 2.16,
+                    "FAT": 6.24,
+                    "CHOCDF": 25.59,
+                    "FIBTG": 2.3
                 },
                 "category": "Generic foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/336/336e810373dd353a955a6896699b586e.jpg"
+                "image": "https://www.edamam.com/food-img/8bf/8bfb2defeba0e0daee30944f77009c74.jpg"
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 2.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 5.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_packet",
-                    "label": "Packet",
-                    "weight": 2.0
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_strip",
+                    "label": "Strip",
+                    "weight": 3.0
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -249,34 +224,34 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_teaspoon",
-                    "label": "Teaspoon",
-                    "weight": 1.0
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_b47ji9gbrvztlfaegs48manqq9wb",
-                "label": "Decaf Coffee",
+                "foodId": "food_akt4a0rbmqy1f8ae8t02xaydsbob",
+                "label": "Steak Cut French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 0.0,
-                    "PROCNT": 0.1,
-                    "FAT": 0.0,
-                    "CHOCDF": 0.0,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 133.0,
+                    "PROCNT": 2.19,
+                    "FAT": 3.39,
+                    "CHOCDF": 23.51,
+                    "FIBTG": 1.9
                 },
                 "category": "Generic foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/14e/14ef691560563277aade0f8c56ed2e44.jpg"
+                "image": "https://www.edamam.com/food-img/7a1/7a1dd7cab2cb1d3342bccfdc7c858b94.jpg"
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 237.0
+                    "weight": 100.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_strip",
+                    "label": "Strip",
+                    "weight": 15.3
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -297,44 +272,72 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_cup",
-                    "label": "Cup",
-                    "weight": 237.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 29.6
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_b4n6bbhb328sp6bqimy9wbzvlo0j",
-                "label": "Coffee Glazed Coffee Cake",
+                "foodId": "food_brmeu40brd8pbub49ysvdb82ouiu",
+                "label": "Sweet Potato French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 379.4759746444108,
-                    "PROCNT": 4.221758923192996,
-                    "FAT": 10.369824877514528,
-                    "CHOCDF": 68.79580628715587,
-                    "FIBTG": 1.277479455860791
+                    "ENERC_KCAL": 152.0,
+                    "PROCNT": 1.57,
+                    "FAT": 5.06,
+                    "CHOCDF": 24.94,
+                    "FIBTG": 3.6
+                },
+                "category": "Generic foods",
+                "categoryLabel": "food",
+                "image": "https://www.edamam.com/food-img/c44/c44503b726d4379d7813de4ebdc0e76b.jpg"
+            },
+            "measures": [
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                    "label": "Gram",
+                    "weight": 1.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                    "label": "Ounce",
+                    "weight": 28.349523125
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
+                    "label": "Pound",
+                    "weight": 453.59237
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
+                    "label": "Kilogram",
+                    "weight": 1000.0
+                }
+            ]
+        },
+        {
+            "food": {
+                "foodId": "food_bjrn1mda4dk5pgb26z2s5bs62pir",
+                "label": "French Fries",
+                "nutrients": {
+                    "ENERC_KCAL": 171.12349236269074,
+                    "PROCNT": 1.507773547358047,
+                    "FAT": 13.164418282636655,
+                    "CHOCDF": 12.735043996059554,
+                    "FIBTG": 1.4219302136705254
                 },
                 "category": "Generic meals",
                 "categoryLabel": "meal",
-                "foodContentsLabel": "sugar; Grape-Nuts cereal; flour; butter; salt; vanilla; baking powder; COFFEE; instant coffee; eggs; baking soda; powdered sugar"
+                "foodContentsLabel": "red potatoes; Oil; sweet onion; Salt; pepper"
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
                     "label": "Whole",
-                    "weight": 253.0148320719625
+                    "weight": 762.277428125
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 253.0148320719625
+                    "weight": 762.277428125
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -360,148 +363,49 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_acb7cp9bvviofraioqnlobuip8s8",
-                "label": "Coffee Lovers Coffee Cake",
+                "foodId": "food_blgs6cdajp22xzazyvl1kb6g9xlr",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 364.37703079853185,
-                    "PROCNT": 3.7587779014446943,
-                    "FAT": 14.172123702475439,
-                    "CHOCDF": 57.12161105307421,
-                    "FIBTG": 0.8568601870642345
+                    "ENERC_KCAL": 129.33786048179485,
+                    "PROCNT": 3.5273961949580412,
+                    "FAT": 3.5273961949580412,
+                    "CHOCDF": 19.988578438095566,
+                    "FIBTG": 3.5273961949580412
                 },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "all-purpose flour; instant coffee; cinnamon, ground; light brown sugar; salt; butter; sour cream; baking soda; egg; walnuts"
-            },
-            "measures": [
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 79.50621970093617
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 79.50621970093617
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
-                    "label": "Gram",
-                    "weight": 1.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
-                    "label": "Ounce",
-                    "weight": 28.349523125
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
-                    "label": "Pound",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
-                    "label": "Kilogram",
-                    "weight": 1000.0
-                }
-            ]
-        },
-        {
-            "food": {
-                "foodId": "food_asvam4oauz7w7pbcq6zhbbfvieyt",
-                "label": "Coffee Time, Coffee Syrup",
-                "nutrients": {
-                    "ENERC_KCAL": 333.0,
-                    "PROCNT": 0.0,
-                    "FAT": 0.0,
-                    "CHOCDF": 76.66999816894531
-                },
-                "brand": "Coffee Time",
+                "brand": "Wild Oats Markets, Inc.",
                 "category": "Packaged foods",
                 "categoryLabel": "food",
-                "foodContentsLabel": "HIGH FRUCTOSE CORN SYRUP; CORN SYRUP; COFFEE EXTRACT; CARAMEL COLOR AND POTASSIUM SORBATE.",
-                "image": "https://www.edamam.com/food-img/a88/a88c1ad66d9b3eb0871fa9032bfe7caa.jpg",
+                "foodContentsLabel": "Organic Potatoes; Organic Palm Oil; Organic Apple Juice Concentrate; Citric Acid ( To Retain Color ).",
+                "image": "https://www.edamam.com/food-img/131/1313b9ce6ad57057460cd46aee27039b.jpg",
                 "servingSizes": [
                     {
-                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_milliliter",
-                        "label": "Milliliter",
-                        "quantity": 30.0
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 3.0
                     },
                     {
-                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_tablespoon",
-                        "label": "Tablespoon",
-                        "quantity": 2.0
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 90.80000305175781
+                    },
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 90.80000000000001
                     }
                 ],
-                "servingsPerContainer": 1.0225188464548056
+                "servingsPerContainer": 1.0
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 29.573529562
+                    "weight": 85.048569375
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_package",
                     "label": "Package",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
-                    "label": "Gram",
-                    "weight": 1.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
-                    "label": "Ounce",
-                    "weight": 28.349523125
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
-                    "label": "Pound",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
-                    "label": "Kilogram",
-                    "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_tablespoon",
-                    "label": "Tablespoon",
-                    "weight": 14.786764781
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_milliliter",
-                    "label": "Milliliter",
-                    "weight": 0.9857843187333334
-                }
-            ]
-        },
-        {
-            "food": {
-                "foodId": "food_ahfjs0ybyh6loiby47sgcbaq6h8q",
-                "label": "Coffee Frosting",
-                "nutrients": {
-                    "ENERC_KCAL": 449.6624613404921,
-                    "PROCNT": 0.27916925057919306,
-                    "FAT": 20.736756479368122,
-                    "CHOCDF": 68.74839345933306
-                },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "butter; instant coffee; sugar; coffee"
-            },
-            "measures": [
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 165.7730924997929
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 165.7730924997929
+                    "weight": 425.242846875
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -527,77 +431,43 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_b6r3z3qbmc63ltal6nhfabpzwsvn",
-                "label": "Fireside Coffee",
+                "foodId": "food_amvcih6bsodbleai0n63hbibmsdf",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 172.8664914767897,
-                    "PROCNT": 1.9003609620366224,
-                    "FAT": 3.5952841344865374,
-                    "CHOCDF": 33.00123946100067,
-                    "FIBTG": 0.40773750866708847
+                    "ENERC_KCAL": 152.85383511484844,
+                    "PROCNT": 3.5273961949580412,
+                    "FAT": 4.703194926610721,
+                    "CHOCDF": 24.691773364706286,
+                    "FIBTG": 2.3515974633053607
                 },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "sugar; coffee creamer; chocolate milk; ground allspice; ground cinnamon; instant decaffeinated coffee"
-            },
-            "measures": [
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 136.9950000003733
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 136.9950000003733
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
-                    "label": "Gram",
-                    "weight": 1.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
-                    "label": "Ounce",
-                    "weight": 28.349523125
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
-                    "label": "Pound",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
-                    "label": "Kilogram",
-                    "weight": 1000.0
-                }
-            ]
-        },
-        {
-            "food": {
-                "foodId": "food_b892lkvbanszaoahgkpd9bkbc1r9",
-                "label": "Coffee Cream",
-                "nutrients": {
-                    "ENERC_KCAL": 195.0,
-                    "PROCNT": 2.7,
-                    "FAT": 19.31,
-                    "CHOCDF": 3.66,
-                    "FIBTG": 0.0
-                },
-                "category": "Generic foods",
+                "brand": "J.R. Simplot Co.",
+                "category": "Packaged foods",
                 "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/8b8/8b82cff989fe1f9d1e07851a8c929f73.jpg"
+                "foodContentsLabel": "Potatoes; Partially Hydrogenated Vegetable Oil ( Soybean And/or Cottonseed Oils ); And/or Vegetable Oil ( Canola; Soybean; And/or Sunflower Oils; Dextrose; Disodium Dihydrogen Pyrophosphate ( To Maintain Natural Color ).",
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 3.0
+                    },
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 85.0
+                    }
+                ],
+                "servingsPerContainer": 1.0
             },
             "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 60.0
+                    "weight": 85.048569375
                 },
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_container",
-                    "label": "Container",
-                    "weight": 11.1
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_package",
+                    "label": "Package",
+                    "weight": 425.242846875
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -618,49 +488,92 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_tablespoon",
-                    "label": "Tablespoon",
-                    "weight": 15.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_cup",
-                    "label": "Cup",
-                    "weight": 240.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 30.0
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_byf2xfhbghlq5qadhyvztabfq665",
-                "label": "Coffee Liqueur",
+                "foodId": "food_bcqcukgbcnsmoqaptfzn1bl4olgc",
+                "label": "McDonald's, French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 336.0,
-                    "PROCNT": 0.1,
-                    "FAT": 0.3,
-                    "CHOCDF": 46.8,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 323.0,
+                    "PROCNT": 3.41,
+                    "FAT": 15.47,
+                    "CHOCDF": 42.58,
+                    "FIBTG": 3.9
                 },
+                "brand": "McDonald's",
                 "category": "Generic foods",
-                "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/625/6255aae740942e782ad588caa6aa86ca.jpg"
+                "categoryLabel": "food"
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 52.0
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 52.0
+                    "weight": 111.62222222222222,
+                    "qualified": [
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_medium",
+                                    "label": "medium"
+                                }
+                            ],
+                            "weight": 117.0
+                        },
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_large",
+                                    "label": "large"
+                                }
+                            ],
+                            "weight": 154.0
+                        },
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_small",
+                                    "label": "small"
+                                }
+                            ],
+                            "weight": 71.0
+                        }
+                    ]
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
+                    "label": "Whole",
+                    "weight": 111.62222222222222,
+                    "qualified": [
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_large",
+                                    "label": "large"
+                                }
+                            ],
+                            "weight": 154.0
+                        },
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_small",
+                                    "label": "small"
+                                }
+                            ],
+                            "weight": 71.0
+                        },
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_medium",
+                                    "label": "medium"
+                                }
+                            ],
+                            "weight": 117.0
+                        }
+                    ]
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -681,149 +594,58 @@ Exemplu de response:<br/>
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
                     "label": "Kilogram",
                     "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_jigger",
-                    "label": "Jigger",
-                    "weight": 52.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 34.8
                 }
             ]
         },
         {
             "food": {
-                "foodId": "food_b80fdemaf9ojfwax2cxsvb06wlii",
-                "label": "Coffee Granita",
+                "foodId": "food_abbpzc5bzzdl96b38dpj0aac0dxl",
+                "label": "WENDY's, French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 68.24738675958189,
-                    "PROCNT": 0.09909407665505227,
-                    "FAT": 0.016515679442508712,
-                    "CHOCDF": 17.418118466898957
+                    "ENERC_KCAL": 301.0,
+                    "PROCNT": 3.73,
+                    "FAT": 14.1,
+                    "CHOCDF": 39.73,
+                    "FIBTG": 4.0
                 },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "coffee; sugar"
-            },
-            "measures": [
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 95.66666666666667
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 95.66666666666667
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
-                    "label": "Gram",
-                    "weight": 1.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
-                    "label": "Ounce",
-                    "weight": 28.349523125
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
-                    "label": "Pound",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
-                    "label": "Kilogram",
-                    "weight": 1000.0
-                }
-            ]
-        },
-        {
-            "food": {
-                "foodId": "food_aof7z08ad0qgsta38run7arojif8",
-                "label": "Instant Coffee",
-                "nutrients": {
-                    "ENERC_KCAL": 353.0,
-                    "PROCNT": 12.2,
-                    "FAT": 0.5,
-                    "CHOCDF": 75.4,
-                    "FIBTG": 0.0
-                },
+                "brand": "Wendy's",
                 "category": "Generic foods",
-                "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/336/336e810373dd353a955a6896699b586e.jpg"
+                "categoryLabel": "food"
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 2.0
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 5.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_packet",
-                    "label": "Packet",
-                    "weight": 2.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
-                    "label": "Gram",
-                    "weight": 1.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
-                    "label": "Ounce",
-                    "weight": 28.349523125
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
-                    "label": "Pound",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
-                    "label": "Kilogram",
-                    "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_teaspoon",
-                    "label": "Teaspoon",
-                    "weight": 1.0
-                }
-            ]
-        },
-        {
-            "food": {
-                "foodId": "food_a60xx3faembmm8amknzkgby1ghnz",
-                "label": "Coffee Coffee Cake",
-                "nutrients": {
-                    "ENERC_KCAL": 330.295111233165,
-                    "PROCNT": 4.41509063443675,
-                    "FAT": 13.145351094028838,
-                    "CHOCDF": 49.01565275106102,
-                    "FIBTG": 0.8224434679122042
-                },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "butter; turbinado sugar; flour; instant coffee; sugar; eggs; baking powder; baking soda; salt; cinnamon; vanilla; milk; coffee"
-            },
-            "measures": [
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 91.02499999994927
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 91.02499999994927
+                    "weight": 146.6222222222222,
+                    "qualified": [
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_large",
+                                    "label": "large"
+                                }
+                            ],
+                            "weight": 184.0
+                        },
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_small",
+                                    "label": "small"
+                                }
+                            ],
+                            "weight": 113.0
+                        },
+                        {
+                            "qualifiers": [
+                                {
+                                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Qualifier_medium",
+                                    "label": "medium"
+                                }
+                            ],
+                            "weight": 142.0
+                        }
+                    ]
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -849,87 +671,24 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_bp0j7rfap97183a6ix0nob71qqx0",
-                "label": "Coffee Liqueur",
+                "foodId": "food_bj6dnkeaxcmyxtbs7z8lxb29cc0b",
+                "label": "APPLEBEE's, French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 336.0,
-                    "PROCNT": 0.1,
-                    "FAT": 0.3,
-                    "CHOCDF": 46.8,
-                    "FIBTG": 0.0
+                    "ENERC_KCAL": 290.0,
+                    "PROCNT": 3.31,
+                    "FAT": 13.17,
+                    "CHOCDF": 39.5,
+                    "FIBTG": 3.9
                 },
+                "brand": "Applebee's",
                 "category": "Generic foods",
-                "categoryLabel": "food",
-                "image": "https://www.edamam.com/food-img/625/6255aae740942e782ad588caa6aa86ca.jpg"
+                "categoryLabel": "food"
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 52.0
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 52.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
-                    "label": "Gram",
-                    "weight": 1.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
-                    "label": "Ounce",
-                    "weight": 28.349523125
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
-                    "label": "Pound",
-                    "weight": 453.59237
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
-                    "label": "Kilogram",
-                    "weight": 1000.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_jigger",
-                    "label": "Jigger",
-                    "weight": 52.0
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_fluid_ounce",
-                    "label": "Fluid ounce",
-                    "weight": 34.8
-                }
-            ]
-        },
-        {
-            "food": {
-                "foodId": "food_aui5rsladj59mbbds5qilazkz2os",
-                "label": "Coffee Milkshake",
-                "nutrients": {
-                    "ENERC_KCAL": 157.47137915055885,
-                    "PROCNT": 3.09422334725759,
-                    "FAT": 8.366429959652205,
-                    "CHOCDF": 17.51335020886386,
-                    "FIBTG": 0.49114436991199506
-                },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "coffee; milk; ice cream"
-            },
-            "measures": [
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 570.09713875
-                },
-                {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-                    "label": "Serving",
-                    "weight": 570.09713875
+                    "weight": 164.0
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -955,28 +714,24 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_a5jn0xiatswu4abw2sraaa5rlru4",
-                "label": "Turkish Coffee",
+                "foodId": "food_adv1vnfaqqzzaaaody5ctbeqymd8",
+                "label": "DENNY's, French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 9.49665475507847,
-                    "PROCNT": 0.006974516024571234,
-                    "FAT": 0.0011624193374285391,
-                    "CHOCDF": 2.4384098401678043
+                    "ENERC_KCAL": 282.0,
+                    "PROCNT": 3.41,
+                    "FAT": 14.13,
+                    "CHOCDF": 35.2,
+                    "FIBTG": 3.5
                 },
-                "category": "Generic meals",
-                "categoryLabel": "meal",
-                "foodContentsLabel": "water; coffee; sugar"
+                "brand": "Denny's",
+                "category": "Generic foods",
+                "categoryLabel": "food"
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 516.6268521592366
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 516.6268521592366
+                    "weight": 165.0
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -1002,29 +757,31 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_apfnvsvb825xw0a9v0118b43e6vu",
-                "label": "Cocoa Coffee",
+                "foodId": "food_bxcxxfubmwlzh7bzk3dazazw4z5v",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 37.36292968737265,
-                    "PROCNT": 0.699483295734571,
-                    "FAT": 0.36560527081190547,
-                    "CHOCDF": 7.733230097518359,
-                    "FIBTG": 0.32464962605328224
+                    "ENERC_KCAL": 250.50505050505052,
+                    "PROCNT": 3.5353535353535355,
+                    "FAT": 10.606060606060607,
+                    "CHOCDF": 35.85858585858586,
+                    "FIBTG": 1.0101010101010102
                 },
-                "category": "Generic meals",
+                "brand": "Bob Evan's",
+                "category": "Fast foods",
                 "categoryLabel": "meal",
-                "foodContentsLabel": "hot chocolate; sugar substitute; coffee"
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 198.0
+                    }
+                ]
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 326.3713683203125
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 326.3713683203125
+                    "weight": 198.0
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -1050,28 +807,31 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_buoda9fban8onyacvolngarzeb7p",
-                "label": "Coffee Jelly",
+                "foodId": "food_bi1fla4abi3regad8qk82b74jvhy",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 31.86530203361436,
-                    "PROCNT": 1.2098579540695367,
-                    "FAT": 0.018576963072442953,
-                    "CHOCDF": 6.8906351003844355
+                    "ENERC_KCAL": 236.5430389560098,
+                    "PROCNT": 7.054792389916082,
+                    "FAT": 15.769535930400654,
+                    "CHOCDF": 21.579364957390368,
+                    "FIBTG": 1.6599511505684899
                 },
-                "category": "Generic meals",
+                "brand": "Bobby's Burger Palace",
+                "category": "Fast foods",
                 "categoryLabel": "meal",
-                "foodContentsLabel": "gelatin; water; white sugar; coffee"
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 8.5
+                    }
+                ]
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 137.1152275858125
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 137.1152275858125
+                    "weight": 240.97094656250002
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -1097,29 +857,30 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_agwjb9vata6ix6b7ck1u8bwgz80a",
-                "label": "Cardamom Coffee",
+                "foodId": "food_b2rdwzia6iu9kgaqdo5qtb0w6mj1",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 18.016833644201043,
-                    "PROCNT": 0.5455416909791875,
-                    "FAT": 0.28781957837620215,
-                    "CHOCDF": 3.933115105233542,
-                    "FIBTG": 1.1235910944220349
+                    "ENERC_KCAL": 311.5866638879603,
+                    "PROCNT": 3.5273961949580412,
+                    "CHOCDF": 43.504553071149175,
+                    "FIBTG": 3.5273961949580412
                 },
-                "category": "Generic meals",
+                "brand": "Burger Meister",
+                "category": "Fast foods",
                 "categoryLabel": "meal",
-                "foodContentsLabel": "cardamom; coffee beans; sugar"
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 6.0
+                    }
+                ]
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 6.230024458854167
-                },
-                {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 6.230024458854167
+                    "weight": 170.09713875
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -1145,28 +906,285 @@ Exemplu de response:<br/>
         },
         {
             "food": {
-                "foodId": "food_ayql8brbqo4s2fav9fgj2b1hakmc",
-                "label": "Iced Coffee",
+                "foodId": "food_bw85g6sb85gzsfbtz6hxnag416c2",
+                "label": "French Fries",
                 "nutrients": {
-                    "ENERC_KCAL": 20.8559231590314,
-                    "PROCNT": 1.0325933831382825,
-                    "FAT": 1.0586872998939698,
-                    "CHOCDF": 1.8001867662765487
+                    "ENERC_KCAL": 347.36842105263156,
+                    "PROCNT": 3.1578947368421053,
+                    "FAT": 23.157894736842103,
+                    "CHOCDF": 29.473684210526315
                 },
-                "category": "Generic meals",
+                "brand": "Captain D's Seafood",
+                "category": "Fast foods",
                 "categoryLabel": "meal",
-                "foodContentsLabel": "coffee; sweetener; water; milk"
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_order",
+                        "label": "Order",
+                        "quantity": 1.0
+                    },
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 95.0
+                    }
+                ]
             },
             "measures": [
                 {
-                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit",
-                    "label": "Whole",
-                    "weight": 374.7999999997498
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_order",
+                    "label": "Order",
+                    "weight": 95.0
                 },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                    "label": "Gram",
+                    "weight": 1.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                    "label": "Ounce",
+                    "weight": 28.349523125
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
+                    "label": "Pound",
+                    "weight": 453.59237
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
+                    "label": "Kilogram",
+                    "weight": 1000.0
+                }
+            ]
+        },
+        {
+            "food": {
+                "foodId": "food_aqpzw47bomvxqharz0gpobtyz2mg",
+                "label": "French Fries",
+                "nutrients": {
+                    "ENERC_KCAL": 258.6757209635897,
+                    "PROCNT": 3.5273961949580412,
+                    "FAT": 1.7636980974790206,
+                    "CHOCDF": 36.44976068123309,
+                    "FIBTG": 3.5273961949580412
+                },
+                "brand": "Chevys Fresh Mex",
+                "category": "Fast foods",
+                "categoryLabel": "meal",
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 3.0
+                    }
+                ]
+            },
+            "measures": [
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
                     "label": "Serving",
-                    "weight": 374.7999999997498
+                    "weight": 85.048569375
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                    "label": "Gram",
+                    "weight": 1.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                    "label": "Ounce",
+                    "weight": 28.349523125
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
+                    "label": "Pound",
+                    "weight": 453.59237
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
+                    "label": "Kilogram",
+                    "weight": 1000.0
+                }
+            ]
+        },
+        {
+            "food": {
+                "foodId": "food_b7nnrokada3gdzbpf7xbdbo0hly5",
+                "label": "French Fries",
+                "nutrients": {
+                    "ENERC_KCAL": 269.2307692307692,
+                    "PROCNT": 2.8846153846153846,
+                    "FAT": 14.423076923076923,
+                    "CHOCDF": 38.46153846153846,
+                    "FIBTG": 6.730769230769231
+                },
+                "brand": "Chicken Shack",
+                "category": "Fast foods",
+                "categoryLabel": "meal",
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 104.0
+                    }
+                ]
+            },
+            "measures": [
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                    "label": "Serving",
+                    "weight": 104.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                    "label": "Gram",
+                    "weight": 1.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                    "label": "Ounce",
+                    "weight": 28.349523125
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
+                    "label": "Pound",
+                    "weight": 453.59237
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
+                    "label": "Kilogram",
+                    "weight": 1000.0
+                }
+            ]
+        },
+        {
+            "food": {
+                "foodId": "food_apz7ywha6neebbao0yvwfa8yiqr8",
+                "label": "French Fries",
+                "nutrients": {
+                    "ENERC_KCAL": 284.1409691629956,
+                    "PROCNT": 3.0837004405286343,
+                    "FAT": 14.537444933920705,
+                    "CHOCDF": 36.563876651982376,
+                    "FIBTG": 2.643171806167401
+                },
+                "brand": "Chuck E. Cheese",
+                "category": "Fast foods",
+                "categoryLabel": "meal",
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                        "label": "Gram",
+                        "quantity": 227.0
+                    }
+                ]
+            },
+            "measures": [
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                    "label": "Serving",
+                    "weight": 227.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                    "label": "Gram",
+                    "weight": 1.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                    "label": "Ounce",
+                    "weight": 28.349523125
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
+                    "label": "Pound",
+                    "weight": 453.59237
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
+                    "label": "Kilogram",
+                    "weight": 1000.0
+                }
+            ]
+        },
+        {
+            "food": {
+                "foodId": "food_bp3rmtgav0d33qandwcpobq4m8ir",
+                "label": "French Fries",
+                "nutrients": {
+                    "ENERC_KCAL": 235.15974633053608,
+                    "PROCNT": 1.7636980974790206,
+                    "FAT": 15.873282877311185,
+                    "CHOCDF": 20.576477803921907,
+                    "FIBTG": 2.3515974633053607
+                },
+                "brand": "Cowboy Chicken",
+                "category": "Fast foods",
+                "categoryLabel": "meal",
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 6.0
+                    }
+                ]
+            },
+            "measures": [
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                    "label": "Serving",
+                    "weight": 170.09713875
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
+                    "label": "Gram",
+                    "weight": 1.0
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                    "label": "Ounce",
+                    "weight": 28.349523125
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_pound",
+                    "label": "Pound",
+                    "weight": 453.59237
+                },
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_kilogram",
+                    "label": "Kilogram",
+                    "weight": 1000.0
+                }
+            ]
+        },
+        {
+            "food": {
+                "foodId": "food_b3dh4frb3kr1fub71876cbb0203j",
+                "label": "French Fries",
+                "nutrients": {
+                    "ENERC_KCAL": 307.2248393348113,
+                    "PROCNT": 3.4136093259423474,
+                    "FAT": 15.930176854397622,
+                    "CHOCDF": 38.68757236067994,
+                    "FIBTG": 2.2757395506282316
+                },
+                "brand": "Golden Chick",
+                "category": "Fast foods",
+                "categoryLabel": "meal",
+                "servingSizes": [
+                    {
+                        "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_ounce",
+                        "label": "Ounce",
+                        "quantity": 3.0999999046325684
+                    }
+                ]
+            },
+            "measures": [
+                {
+                    "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                    "label": "Serving",
+                    "weight": 87.8835189838788
                 },
                 {
                     "uri": "http://www.edamam.com/ontologies/edamam.owl#Measure_gram",
@@ -1194,10 +1212,17 @@ Exemplu de response:<br/>
     "_links": {
         "next": {
             "title": "Next page",
-            "href": "https://api.edamam.com/api/food-database/v2/parser?session=44&ingr=coffee&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe"
+            "href": "https://api.edamam.com/api/food-database/v2/parser?session=44&ingr=french+fries&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe"
         }
     }
 }
 ```
+
+
+## Fluxul de date
+
+În cadrul aplicației, utilizatorul final trebuie să introducă denumirea alimentului sau rețeta completă pentru care dorește să fie afișate informațiile nutriționale. <br/>
+Dacă este introdus un aliment în primul cadran al aplicației, este trimis un request de tip GET către Food and Grocery Database API care oferă valori estimative pentru numărul de kilocalorii și cantitatea de macronutrienți (proteine, grăsimi, carbohidrați) afereți pentru 100g de produs. Răspunsul obținut este în format JSON cu structura prezentată anterior în descrierea API-ului. Prin intermediul butonului "Search" se inițiază o cerere, valoarea introdusă de utilizator se va utiliza ca parametru pentru API, iar răspunsul va fi prelucrat după cum urmează:
+
 
 
