@@ -20,41 +20,69 @@
         }
     </style>
     <body>
-        <div class="w3-row" style="background-color: #1A64A5;text-align: center;">
-            <h3>Nutrition App</h3>
+        <div class="w3-row" style="background-color: #04AA6D;text-align: center;color: #fff;">
+            <h3 style="font-weight: bold;">Nutrition App</h3>
         </div>
         <div class="w3-row">
-            <div class="w3-col" style="width: 49.75%;height: 1000px;background-color: #F2CAB5;">
-                <div class="w3-col w3-twothird" style="width: 100%;margin-top: 100px;background-color: #F2CAB5; text-align: center;">
-                    <label>Insert Ingredient</label><br>
-                    <input type="text" id="ingr" name="ingredient"><br><br>
-                    <button onclick="searchFunction()">Search</button>
-                    <p id="demo"></p> 
-                    <table id="tableFirstAPI" class="center_table" style="display: none; width: auto;">
+            <div class="w3-col" style="width: 49.85%;height: 1000px;background-color: #eee;">
+                <div class="w3-col w3-twothird" style="width: 100%;margin-top: 100px;background-color: #eee; text-align: center;">
+                    <p style="padding-left: 100px;padding-right: 100px;">
+                        "Enter a what you have eaten, like 
+                        <span style="color:#7aca25; font-weight: bold;">"coffee"</span> 
+                         or 
+                        <span style="color:#7aca25; font-weight: bold;">"orange"</span>
+                         or 
+                        <span style="color:#7aca25; font-weight: bold;">"red apple"</span>
+                         to see how it works. We have accurate data tens of thousands of foods, including international dishes."
+                    </p>
+                    <br><br>
+                    <textarea cols="40" rows="10" id="ingr" style="border-radius: 10px;"></textarea><br><br>
+                    <button onclick="searchFunctionAPI1()" style="background-color: #7aca25; color: #fff;border-radius: 5px;border: none;padding: 5px;">Analize >></button><br><br>
+                    <table id="tableFirstAPI" class="center_table" style="display: none; width: 75%;">
                         <tr>
-                            <th style="width: 40%;background-color: #1A64A5;color: #ddd;">Food</th>
-                            <th style="width: 40%;background-color: #1A64A5;color: #ddd;">Nutrients</th>
-                            <th style="width: 20%;background-color: #1A64A5;color: #ddd;">Qty</th>
+                            <th style="width: 40%;background-color: #04AA6D;color: #fff;">Food</th>
+                            <th style="width: 40%;background-color: #04AA6D;color: #fff;">Nutrients</th>
+                            <th style="width: 20%;background-color: #04AA6D;color: #fff;">Qty</th>
                         </tr>
                         <tr>
-                            <td id="food" style="width: 40%;background-color: #eee;"></td>
+                            <td id="food" style="width: 40%;background-color: #ddd;"></td>
                             <td id="nutrients" style="width: 40%;background-color: #fff;padding:15px;"></td>
-                            <td id="qty" style="width: 20%;background-color: #eee;"></td>
+                            <td id="qty" style="width: 20%;background-color: #ddd;"></td>
                         </tr>
                     </table>
-                    <p id="error"></p>
+                    <p id="error1"></p>
                 </div>
             </div>
-            <div class="w3-col" style="width: 0.5%;height: 1000px;background-color: #EEA47F;border-radius:1px;">  
+            <div class="w3-col" style="width: 0.3%;height: 1000px;background-color: #04AA6D;">  
             </div>
-            <div class="w3-col" style="width: 49.75%;height: 1000px;background-color: #F2CAB5;">
-                <p>I am a panel.</p>
+            <div class="w3-col" style="width: 49.85%;height: 1000px;background-color: #eee;">
+                <div class="w3-col w3-twothird" style="width: 100%;margin-top: 100px;background-color: #eee; text-align: center;">
+                    <p style="padding-left: 100px;padding-right: 100px;">
+                        "Enter an ingredient list list for what you are cooking, like 
+                        <span style="color:#7aca25; font-weight: bold;">"1 cup rice, 10 oz chickpeas"</span> 
+                         , etc.
+                         Enter each ingredient on a new line."
+                    </p>
+                    <br><br>
+                    <textarea cols="40" rows="10" id="recipe-ingr" style="border-radius: 10px;"></textarea><br><br>
+                    <button onclick="searchFunctionAPI2()" style="background-color: #7aca25; color: #fff;border-radius: 5px;border: none;padding: 5px;">Analize >></button><br><br>
+                    <table id="tableSecondAPI" class="center_table" style="display: none; width: 75%;">
+                        <tr>
+                            <th style="width: 30%;background-color: #04AA6D;color: #fff;">Food</th>
+                            <th style="width: 20%;background-color: #04AA6D;color: #fff;">Qty</th>
+                            <th style="width: 20%;background-color: #04AA6D;color: #fff;">Unit</th>
+                            <th style="width: 15%;background-color: #04AA6D;color: #fff;">Calories</th>
+                            <th style="width: 15%;background-color: #04AA6D;color: #fff;">Weight</th>
+                        </tr>
+                    </table>
+                    <p id="error2"></p>
+                </div>
             </div>
         </div>
     </body>
 
     <script>
-        function searchFunction(){
+        function searchFunctionAPI1(){
             var ingredient = document.getElementById("ingr").value;
             ingredient = ingredient.replaceAll(" ", "%20");
             
@@ -63,7 +91,7 @@
             var table = document.getElementById("tableFirstAPI");
             table.style.display = "none";
             var tr = table.getElementsByTagName("tr");
-            document.getElementById("error").style.display = "none";
+            document.getElementById("error1").style.display = "none";
             req = $.ajax({
                 url: url_search,
                 type: 'GET',
@@ -78,13 +106,70 @@
                         table.style.display = "";
                     }
                     else {
-                        document.getElementById("error").innerHTML = "Bla bla bla";
-                        document.getElementById("error").style.display = "";
+                        document.getElementById("error1").innerHTML = "Bla bla bla";
+                        document.getElementById("error1").style.display = "";
                     }
                 }
 
             });
         }
+    </script>
+
+    <script>
+        function searchFunctionAPI2(){
+            var list_ingredient = document.getElementById("recipe-ingr").value;
+            var table = document.getElementById("tableSecondAPI");
+            table.style.display = "none";
+
+            var tr = table.getElementsByTagName("tr");
+            document.getElementById("error2").style.display = "none";
+            
+            var tr_length = tr.length;
+            for (var i = 1; i < tr_length; i++) {
+                table.deleteRow(1);
+            }
+            var ingredients = list_ingredient.split(",\n");
+            var j = 0;
+            for(var i = 0; i < ingredients.length; i++){
+                ingredient = ingredients[i].replaceAll(" ", "%20");
+                var url_search = "https://api.edamam.com/api/nutrition-data?app_id=918f927c&app_key=852d971200121c02c19973365979a269&ingr=" + ingredient;
+                var split_ingredient = ingredient.split("%20");
+                $.ajax({
+                    url: url_search,
+                    type: 'GET',
+                    async: false,
+                    success: function (response) {
+                        j++;
+                        var row = table.insertRow(j);
+                        var td0 = row.insertCell(0);
+                        var td1 = row.insertCell(1);
+                        var td2 = row.insertCell(2);
+                        var td3 = row.insertCell(3);
+                        var td4 = row.insertCell(4);
+
+                        td0.innerHTML = split_ingredient[2];
+                        td0.style.backgroundColor = "#fff";
+
+                        td1.innerHTML = split_ingredient[0];
+                        td1.style.backgroundColor = "#ddd";
+
+                        td2.innerHTML = split_ingredient[1];
+                        td2.style.backgroundColor = "#fff";
+
+                        td3.innerHTML = response.calories.toString() + " kcal";
+                        td3.style.backgroundColor = "#ddd";
+
+                        td4.innerHTML = response.totalWeight.toFixed(1).toString() + " g";
+                        td4.style.backgroundColor = "#fff";
+                        
+                        if(i == ingredients.length - 1){
+                            table.style.display = "";
+                        }
+                    }
+                });
+            }
+        }
+
     </script>
 
 </html>
