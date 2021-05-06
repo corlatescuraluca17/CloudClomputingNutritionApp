@@ -458,7 +458,7 @@ Exemplu de response:<br/>
             "unit": "kcal"
         }
     }
-}
+ }
       ```
 
 ## Fluxul de date
