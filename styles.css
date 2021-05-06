@@ -1,0 +1,36 @@
+.center_table {
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+.firstButton {
+    background-color: #7aca25;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.firstButton:hover {
+    background-color: #fff;
+    color: #04AA6D;
+}
+
+.secondButton {
+    background-color: #fff;
+    color: #04AA6D;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.secondButton:hover {
+    background-color: #7aca25;
+    color: #fff;
+}
