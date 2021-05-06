@@ -460,12 +460,13 @@ Exemplu de response:<br/>
         }
     }
  }
-      ```
+ ```
 
 ## Fluxul de date
 
 În cadrul aplicației, utilizatorul final trebuie să introducă denumirea alimentului sau rețeta completă pentru care dorește să fie afișate informațiile nutriționale. <br/>
 Dacă este introdus un aliment în primul cadran al aplicației, este trimis un request de tip GET către Food and Grocery Database API care oferă valori estimative pentru numărul de kilocalorii și cantitatea de macronutrienți (proteine, grăsimi, carbohidrați) afereți pentru 100g de produs. Răspunsul obținut este în format JSON cu structura prezentată anterior în descrierea API-ului. Prin intermediul butonului "Analyze" se inițiază o cerere, valoarea introdusă de utilizator se va utiliza ca parametru pentru API, iar răspunsul va fi prelucrat după cum urmează:
+
 ```
 var url_search = "https://api.edamam.com/api/food-database/v2/parser?ingr=" + ingredient + "&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe";
 req = $.ajax({
@@ -499,51 +500,35 @@ var ingredients = list_ingredient.split(",\n");
  ```
  Răspunsul request-ului este interpretat și afișat în 2 tabele:
  ```
- var row = table.insertRow(j);
-                    var td0 = row.insertCell(0);
-                    var td1 = row.insertCell(1);
-                    var td2 = row.insertCell(2);
-                    var td3 = row.insertCell(3);
-                    var td4 = row.insertCell(4);
+ td0.innerHTML = split_ingredient[2];
+ td0.style.backgroundColor = "#fff";
 
-                    td0.innerHTML = split_ingredient[2];
-                    td0.style.backgroundColor = "#fff";
+ td1.innerHTML = split_ingredient[0];
+ td1.style.backgroundColor = "#ddd";
 
-                    td1.innerHTML = split_ingredient[0];
-                    td1.style.backgroundColor = "#ddd";
+ td2.innerHTML = split_ingredient[1];
+ td2.style.backgroundColor = "#fff";
 
-                    td2.innerHTML = split_ingredient[1];
-                    td2.style.backgroundColor = "#fff";
+ td3.innerHTML = response.calories.toString() + " kcal";
+ td3.style.backgroundColor = "#ddd";
 
-                    td3.innerHTML = response.calories.toString() + " kcal";
-                    td3.style.backgroundColor = "#ddd";
-
-                    td4.innerHTML = response.totalWeight.toFixed(1).toString() + " g";
-                    td4.style.backgroundColor = "#fff";
+ td4.innerHTML = response.totalWeight.toFixed(1).toString() + " g";
+ td4.style.backgroundColor = "#fff";
  ```
  ```
-                        tableCalories.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML = totalCalories;
-                        tableNutrients.getElementsByTagName("tr")[0].getElementsByTagName("td")[0].innerHTML = "Fat - " + totalFat.toFixed(1).toString() + " g";
-                        tableNutrients.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML = (totalFat/65*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML = "Cholesterol - " + totalChole.toFixed(1).toString() + " mg";
-                        tableNutrients.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerHTML = (totalChole/300*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[2].getElementsByTagName("td")[0].innerHTML = "Sodium - " + totalSodium.toFixed(1).toString() + " mg";
-                        tableNutrients.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].innerHTML = (totalSodium/2400*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[3].getElementsByTagName("td")[0].innerHTML = "Carbohydrate - " + totalCarbs.toFixed(1).toString() + " g";
-                        tableNutrients.getElementsByTagName("tr")[3].getElementsByTagName("td")[1].innerHTML = (totalCarbs/300*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[4].getElementsByTagName("td")[0].innerHTML = "Protein - " + totalProtein.toFixed(1).toString() + " g";
-                        tableNutrients.getElementsByTagName("tr")[4].getElementsByTagName("td")[1].innerHTML = (totalProtein/50*100).toFixed(0).toString() + " %";
-                        
-                        tableNutrients.getElementsByTagName("tr")[5].getElementsByTagName("td")[0].innerHTML = "Vitamin D - " + totalVitaminD.toFixed(1).toString() + " mcg";
-                        tableNutrients.getElementsByTagName("tr")[5].getElementsByTagName("td")[1].innerHTML = (totalVitaminD/10*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[6].getElementsByTagName("td")[0].innerHTML = "Calcium - " + totalCalcium.toFixed(1).toString() + " mg";
-                        tableNutrients.getElementsByTagName("tr")[6].getElementsByTagName("td")[1].innerHTML = (totalCalcium/1000*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[7].getElementsByTagName("td")[0].innerHTML = "Iron - " + totalIron.toFixed(1).toString() + " mg";
-                        tableNutrients.getElementsByTagName("tr")[7].getElementsByTagName("td")[1].innerHTML = (totalIron/18*100).toFixed(0).toString() + " %";
-                        tableNutrients.getElementsByTagName("tr")[8].getElementsByTagName("td")[0].innerHTML = "Potassium - " + totalPotassium.toFixed(1).toString() + " mg";
-                        tableNutrients.getElementsByTagName("tr")[8].getElementsByTagName("td")[1].innerHTML = (totalPotassium/4700*100).toFixed(0).toString() + " %";
+ tableCalories.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML = totalCalories;
+ tableNutrients.getElementsByTagName("tr")[0].getElementsByTagName("td")[0].innerHTML = "Fat - " + totalFat.toFixed(1).toString() + " g";
+ tableNutrients.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML = (totalFat/65*100).toFixed(0).toString() + " %";
+ tableNutrients.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML = "Cholesterol - " + totalChole.toFixed(1).toString() + " mg";
+ tableNutrients.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerHTML = (totalChole/300*100).toFixed(0).toString() + " %";
+ tableNutrients.getElementsByTagName("tr")[2].getElementsByTagName("td")[0].innerHTML = "Sodium - " + totalSodium.toFixed(1).toString() + " mg";
+ tableNutrients.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].innerHTML = (totalSodium/2400*100).toFixed(0).toString() + " %";
+ tableNutrients.getElementsByTagName("tr")[3].getElementsByTagName("td")[0].innerHTML = "Carbohydrate - " + totalCarbs.toFixed(1).toString() + " g";
 ```
-         
+ 
+# Referințe
+1. [Nutrition API Documentation] (https://developer.edamam.com/edamam-docs-nutrition-api)
+2. [Food Database API Documentation] (https://developer.edamam.com/food-database-api-docs)
                     
      
  
