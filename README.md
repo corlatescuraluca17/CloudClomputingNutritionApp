@@ -464,7 +464,28 @@ Exemplu de response:<br/>
 ## Fluxul de date
 
 În cadrul aplicației, utilizatorul final trebuie să introducă denumirea alimentului sau rețeta completă pentru care dorește să fie afișate informațiile nutriționale. <br/>
-Dacă este introdus un aliment în primul cadran al aplicației, este trimis un request de tip GET către Food and Grocery Database API care oferă valori estimative pentru numărul de kilocalorii și cantitatea de macronutrienți (proteine, grăsimi, carbohidrați) afereți pentru 100g de produs. Răspunsul obținut este în format JSON cu structura prezentată anterior în descrierea API-ului. Prin intermediul butonului "Search" se inițiază o cerere, valoarea introdusă de utilizator se va utiliza ca parametru pentru API, iar răspunsul va fi prelucrat după cum urmează:
+Dacă este introdus un aliment în primul cadran al aplicației, este trimis un request de tip GET către Food and Grocery Database API care oferă valori estimative pentru numărul de kilocalorii și cantitatea de macronutrienți (proteine, grăsimi, carbohidrați) afereți pentru 100g de produs. Răspunsul obținut este în format JSON cu structura prezentată anterior în descrierea API-ului. Prin intermediul butonului "Analyze" se inițiază o cerere, valoarea introdusă de utilizator se va utiliza ca parametru pentru API, iar răspunsul va fi prelucrat după cum urmează:
+```
+var url_search = "https://api.edamam.com/api/food-database/v2/parser?ingr=" + ingredient + "&app_id=8cb39be1&app_key=1eb66ea78321471581780819156aa1fe";
+req = $.ajax({
+                url: url_search,
+                type: 'GET',
+                success: function (response) {
+                    if(response.parsed.length != 0){
+                        tr[1].getElementsByTagName("td")[0].innerHTML = response.parsed[0].food.label;
+                        tr[1].getElementsByTagName("td")[1].innerHTML = "Energy KCAL: " + response.parsed[0].food.nutrients.ENERC_KCAL + " kcal <br />"
+                                                                        + "Protein: " +  response.parsed[0].food.nutrients.PROCNT + " g <br />"
+                                                                        + "Fat: " + response.parsed[0].food.nutrients.FAT + " g <br />"
+                                                                        + "Carbs: " + response.parsed[0].food.nutrients.CHOCDF + " g ";
+                        tr[1].getElementsByTagName("td")[2].innerHTML = "100 g";
+                        table.style.display = "";
+                    }
+                    else {
+                        document.getElementById("error1").innerHTML = "Error at the request";
+                        document.getElementById("error1").style.display = "";
+                    }
+                }
 
-
-
+            });
+```
+Similar primului API funcționează și request-urile pentru cel de-al doilea. Ulilizatorul
