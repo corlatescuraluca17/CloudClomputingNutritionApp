@@ -9,6 +9,7 @@ Utilizatorul are 2 opțiuni:
 - inserează denumirea unui aliment și va obține valorile nutriționale și numărul de calorii asociate cu 100 g din respectivul aliment
 - inserează o rețetă completă, inclusiv unitățile de măsură și se vor afișa macronutrienții și numarul de calorii corespunzătoare cantităților specificate
 
+Aplicația rulează pe: https://nutritionapp-rc.azurewebsites.net/. 
 ## Descrierea API-urilor folosite
 Pentru implementarea aplicației au fost folosite 2 API-uri. <br/>
 * Food and Grocery Database API with Natural Language Processing (NLP) - oferă, prin autentificare, API key-uri, pentru varianta free având un număr limitat de 100 request-uri/minut, utilizatorilor ce își doresc să integreze  în aplicațiile lor un API care calculează valorile nutriționale.  <br/>
@@ -106,7 +107,7 @@ Se observă în request-ul de mai sus parametrii:<br/>
        * app_key - cheia de autentificare contului ce permite trimiterea request-urilor, dat explicit în codul sursă <br/>
        * ingr - ce reprezintă alimentele ce alcatuiesc reteta impreuna cu cantitatile corespunzatoare<br/>
 Exemplu de response:<br/>
-      ```
+```
 {
     "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_c5fec61b1505495f97bc277ca4ea71a2",
     "calories": 115,
@@ -488,4 +489,62 @@ req = $.ajax({
 
             });
 ```
-Similar primului API funcționează și request-urile pentru cel de-al doilea. Ulilizatorul
+Similar primului API funcționează și request-urile pentru cel de-al doilea. Ulilizatorul introduce o secvență de text în care fiecare linie conține o anumită cantitate dintr-un ingredient. Lista este delimitată prin ",\n", iar componentele sunt concatenate pentru a forma request-ul GET. 
+```
+var ingredients = list_ingredient.split(",\n");
+    for(var i = 0; i < ingredients.length; i++){
+        ingredient = ingredients[i].replaceAll(" ", "%20");
+        var url_search = "https://api.edamam.com/api/nutrition-data?app_id=918f927c&app_key=852d971200121c02c19973365979a269&ingr=" + ingredient;
+        var split_ingredient = ingredient.split("%20");
+ ```
+ Răspunsul request-ului este interpretat și afișat în 2 tabele:
+ ```
+ var row = table.insertRow(j);
+                    var td0 = row.insertCell(0);
+                    var td1 = row.insertCell(1);
+                    var td2 = row.insertCell(2);
+                    var td3 = row.insertCell(3);
+                    var td4 = row.insertCell(4);
+
+                    td0.innerHTML = split_ingredient[2];
+                    td0.style.backgroundColor = "#fff";
+
+                    td1.innerHTML = split_ingredient[0];
+                    td1.style.backgroundColor = "#ddd";
+
+                    td2.innerHTML = split_ingredient[1];
+                    td2.style.backgroundColor = "#fff";
+
+                    td3.innerHTML = response.calories.toString() + " kcal";
+                    td3.style.backgroundColor = "#ddd";
+
+                    td4.innerHTML = response.totalWeight.toFixed(1).toString() + " g";
+                    td4.style.backgroundColor = "#fff";
+ ```
+ ```
+                        tableCalories.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML = totalCalories;
+                        tableNutrients.getElementsByTagName("tr")[0].getElementsByTagName("td")[0].innerHTML = "Fat - " + totalFat.toFixed(1).toString() + " g";
+                        tableNutrients.getElementsByTagName("tr")[0].getElementsByTagName("td")[1].innerHTML = (totalFat/65*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerHTML = "Cholesterol - " + totalChole.toFixed(1).toString() + " mg";
+                        tableNutrients.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerHTML = (totalChole/300*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[2].getElementsByTagName("td")[0].innerHTML = "Sodium - " + totalSodium.toFixed(1).toString() + " mg";
+                        tableNutrients.getElementsByTagName("tr")[2].getElementsByTagName("td")[1].innerHTML = (totalSodium/2400*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[3].getElementsByTagName("td")[0].innerHTML = "Carbohydrate - " + totalCarbs.toFixed(1).toString() + " g";
+                        tableNutrients.getElementsByTagName("tr")[3].getElementsByTagName("td")[1].innerHTML = (totalCarbs/300*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[4].getElementsByTagName("td")[0].innerHTML = "Protein - " + totalProtein.toFixed(1).toString() + " g";
+                        tableNutrients.getElementsByTagName("tr")[4].getElementsByTagName("td")[1].innerHTML = (totalProtein/50*100).toFixed(0).toString() + " %";
+                        
+                        tableNutrients.getElementsByTagName("tr")[5].getElementsByTagName("td")[0].innerHTML = "Vitamin D - " + totalVitaminD.toFixed(1).toString() + " mcg";
+                        tableNutrients.getElementsByTagName("tr")[5].getElementsByTagName("td")[1].innerHTML = (totalVitaminD/10*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[6].getElementsByTagName("td")[0].innerHTML = "Calcium - " + totalCalcium.toFixed(1).toString() + " mg";
+                        tableNutrients.getElementsByTagName("tr")[6].getElementsByTagName("td")[1].innerHTML = (totalCalcium/1000*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[7].getElementsByTagName("td")[0].innerHTML = "Iron - " + totalIron.toFixed(1).toString() + " mg";
+                        tableNutrients.getElementsByTagName("tr")[7].getElementsByTagName("td")[1].innerHTML = (totalIron/18*100).toFixed(0).toString() + " %";
+                        tableNutrients.getElementsByTagName("tr")[8].getElementsByTagName("td")[0].innerHTML = "Potassium - " + totalPotassium.toFixed(1).toString() + " mg";
+                        tableNutrients.getElementsByTagName("tr")[8].getElementsByTagName("td")[1].innerHTML = (totalPotassium/4700*100).toFixed(0).toString() + " %";
+```
+         
+                    
+     
+ 
+ 
